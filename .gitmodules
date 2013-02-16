@@ -1,0 +1,3 @@
+[submodule "sysinfo"]
+	path = sysinfo
+	url = git@github.com:delta4d/sysinfo.git
