@@ -1,0 +1,90 @@
+#!/usr/bin/env sh
+
+# Print color table in 256 color term
+# By delta4d@gmail.com
+
+FG='\e[38;5;'
+BG='\e[48;5;'
+RESET='\e[0m'
+RGBTable1=('000000' '800000' '008000' '808000' '000080' '800080' '008080' 'c0c0c0'\
+           '808080' 'ff0000' '00ff00' 'ffff00' '0000ff' 'ff00ff' '00ffff' 'ffffff')
+RGBTable2=('00' 'f5' '78' 'fa' '7d' 'ff')
+RGBTable3=('08' '12' '1c' '26' '30' '3a' '44' '4e' '58' '62' '6c' '76' '80' '8a'\
+           '94' '9e' 'a8' 'b2' 'bc' 'c6' 'd0' 'da' 'e4' 'ee')
+BLACK=0
+RED=1
+GREEN=2
+YELLOW=3
+BLUE=4
+MAGENTA=5
+CYAN=6
+WHITE=7
+black=8
+red=9
+green=10
+yellow=11
+blue=12
+magenta=13
+cyan=14
+white=15
+
+to_rgb() {
+	if (($1 < 16)); then
+		echo ${RGBTable1[$1]}
+	elif (($1 < 232)); then
+		x="$(($1-16))"
+		sz="${#RGBTable2[@]}"		
+		rgb=
+		for i in {0..2}; do
+			rgb=$rgb"${RGBTable2[$((x%sz))]}"
+			((x/=sz))
+		done
+		echo $rgb | rev
+	else
+		x="$(($1-232))"
+		echo ${RGBTable3[$x]}{,,} | sed 's/ //g'
+	fi
+}
+
+output() {
+	# $1 background color, $2 foreground color
+	echo -en "${BG}${1}m${FG}${2}m`printf "%03d " ${1}`#`to_rgb ${1}`"
+}
+
+print_color_table() {
+	for i in {0..15}; do
+		output $i $BLACK
+		if ((i == 7)); then
+			echo
+		else
+			echo -en "$RESET"
+			if ((i == 15)); then
+				echo
+			else
+				echo -n " "
+			fi
+		fi
+	done
+
+	echo
+
+	for R in {0..5}; do
+		for G in {0..5}; do
+			for B in {0..5}; do
+				output $((16+R*36+G*6+B)) $BLACK
+				((B-5)) && echo -en "${RESET} "
+			done
+			echo
+		done
+	done
+
+	echo
+
+	for i in {232..255}; do
+		output $i $BLACK
+		((i % 6 != 237 % 6)) && echo -en "$RESET "
+		((i % 6 == 237 % 6)) && echo -e "$RESET"
+	done
+}
+
+print_color_table
