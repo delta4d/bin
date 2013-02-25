@@ -1,6 +1,6 @@
 ### some handy scripts
 
-color
+color256
 -----
 
 when doing a screenshot, u can use this script
