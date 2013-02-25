@@ -109,16 +109,16 @@ class Gent
 	end
 
 	def collect_sysinfo
-		@sysinfo << "#{username.green}@#{hostname.green}" 	\
-		         << "#{"Kernel: ".red}#{kernel}" 			\
-				 << "#{"Uptime: ".red}#{format_uptime}"		\
-				 << "#{"Packages: ".red}#{package}"			\
-				 << "#{"Shell: ".red}#{shell}"				\
-				 << "#{"Resolution: ".red}#{resolution}"	\
-				 << "#{"DE: ".red}#{deskenv}"				\
-				 << "#{"WM: ".red}#{windowmgr}"				\
-				 << "#{"CPU: ".red}#{cpu}"					\
-				 << "#{"RAM: ".red}#{ram}"					\
+		@sysinfo << "#{username.green}@#{hostname.green}"   \
+		         << "#{"Kernel: ".red}#{kernel}"            \
+				 << "#{"Uptime: ".red}#{format_uptime}"     \
+				 << "#{"Packages: ".red}#{package}"         \
+				 << "#{"Shell: ".red}#{shell}"              \
+				 << "#{"Resolution: ".red}#{resolution}"    \
+				 << "#{"DE: ".red}#{deskenv}"               \
+				 << "#{"WM: ".red}#{windowmgr}"             \
+				 << "#{"CPU: ".red}#{cpu}"                  \
+				 << "#{"RAM: ".red}#{ram}"                  \
 	end
 
 	def go
