@@ -86,3 +86,5 @@ main() {
 }
 
 main "$@"
+
+# vim:ts=4
