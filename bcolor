@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+# Print the basic colors in term
+# By delta4d@gmail.com
+
+FGN=('black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white')
+BGN=('DFT' 'BLK' 'RED' 'GRN' 'YEL' 'BLU' 'MAG' 'CYN' 'WHT')
+RESET='\e[0m'
+
+for i in {0..8}; do
+	((i)) && bg=$((i+39))
+	echo -n "${BGN[$i]} "
+	for j in {0..15}; do
+		fg=$((j%8+30+j/8*60))
+		echo -en "\e[${bg}m\e[${fg}m  ${FGN[$((j%8))]}  "
+		((j==7)) && echo -e "$RESET" && echo -n "    "
+	done
+	echo -e "$RESET"
+done
+
+# vim:ts=4
