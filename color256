@@ -30,11 +30,13 @@ cyan=14
 white=15
 
 usage() {
-	echo -e "Usage: "`basename $0`" [options] [values]\n"
-	echo -e "Options:"
-	echo -e "  none\t\tprint all 256 colors"
-	echo -e "  -x var\tconvert term color value 'var' to RGB value"
-	echo -e "  -h\t\tdisplay this and exit"
+	cat <<-EOF
+		Usage: `basename $0` [options] [values]
+		Options:
+		  none		print all 256 colors
+		  -x var	convert term color value 'var' to RGB value
+		  -h		display help
+	EOF
 	exit
 }
 
