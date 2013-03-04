@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+# goto the upper dir
+# by delta4d@gmail.com
+
+usage() {
+	# basename seems a little problem here
+	cat <<-EOF
+	Description: up the current directory
+
+	Usage: "up number"
+
+	Remember add "alias up='path/to/up'" in .bashrc or .zshrc or ... 
+	EOF
+}
+
+if ( (( $# != 1 )) || [[ ! $1 =~ ^[0-9]+$ ]] || (( $1 >= 10 )) ); then
+	usage
+else
+	for i in `seq $1`; do
+		[[ `pwd` == "/" ]] && break
+		cd ..
+	done
+fi
