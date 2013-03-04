@@ -6,9 +6,7 @@ usage() {
 	# basename seems a little problem here
 	cat <<-EOF
 	Description: up the current directory
-
 	Usage: "up number"
-
 	Remember add "alias up='path/to/up'" in .bashrc or .zshrc or ... 
 	EOF
 }
