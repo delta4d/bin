@@ -2,20 +2,28 @@
 # goto the upper dir
 # by delta4d@gmail.com
 
+DEP=10
+
 usage() {
 	# basename seems a little problem here
 	cat <<-EOF
 	Description: up the current directory
-	Usage: "up number"
+	Usage: "up number" (number < $DEP)
 	Remember add "alias up='path/to/up'" in .bashrc or .zshrc or ... 
 	EOF
 }
 
-if ( (( $# != 1 )) || [[ ! $1 =~ ^[0-9]+$ ]] || (( $1 >= 10 )) ); then
-	usage
+if (( $# == 0 )); then
+	num=1
 else
-	for i in `seq $1`; do
+	num=$1
+fi
+
+if ( (( $# == 0 )) || ( (( $# == 1)) && [[ $1 =~ ^[0-9]+$ ]] && (( $1 < $DEP ))) ); then
+	for i in `seq $num`; do
 		[[ `pwd` == "/" ]] && break
 		cd ..
 	done
+else
+	usage
 fi
