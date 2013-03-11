@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# copy the output to the system clipboard
+# by delta4d@gmail.com
+
+$@ | tee /dev/tty | xclip -sel clip
