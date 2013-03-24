@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# edit the latest modified file
+
+EDITOR=vim
+
+newest() {
+	for i in $(ls -t); do
+		[[ -d $i ]] && continue
+		echo $i
+		break
+	done
+}
+
+$EDITOR $(newest)
