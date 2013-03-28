@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # edit the latest modified file
 
-EDITOR=vim
+EDITOR=${EDITOR:-vim}
 
 newest() {
 	for i in $(ls -t); do
