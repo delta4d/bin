@@ -1,7 +1,19 @@
 #!/usr/bin/env sh
 # edit the latest modified file
+# by delta4d@gmail.com
 
+# set the EDITOR env var
 EDITOR=${EDITOR:-vim}
+
+usage() {
+	cat <<-EOF
+	Usage: `basename $0` [name]
+	Get the latest modified file
+
+	  no arguments: edit newest file with your flavoured editor (default vim)
+	  name: return the file latest modified file
+	EOF
+}
 
 newest() {
 	for i in $(ls -t); do
@@ -11,4 +23,10 @@ newest() {
 	done
 }
 
-$EDITOR $(newest)
+if [[ $# == 0 ]]; then
+	$EDITOR $(newest)
+elif [[ $# == 1 ]] && [[ $1 == "name" ]]; then
+	newest
+else
+	usage
+fi
