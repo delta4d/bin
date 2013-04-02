@@ -7,24 +7,43 @@ EDITOR=${EDITOR:-vim}
 
 usage() {
 	cat <<-EOF
-	Usage: `basename $0` [name]
+	Usage: `basename $0` [number|name]
 	Get the latest modified file
 
 	  no arguments: edit newest file with your flavoured editor (default vim)
+	  number: return the file list of the latest NUMBER files
 	  name: return the file latest modified file
 	EOF
 }
 
 newest() {
+	file=()
 	for i in $(ls -t); do
 		[[ -d $i ]] && continue
-		echo $i
-		break
+		[[ $# == 0 ]] && echo $i && break
+		file=(${file[@]} $i)
+		(( ${#file[@]} >= $1 )) && break
 	done
 }
 
 if [[ $# == 0 ]]; then
 	$EDITOR $(newest)
+elif [[ $# == 1 ]] && [[ $1 =~ ^[0-9]+$ ]]; then
+	newest $1
+
+	n=1
+	for i in ${file[@]}; do
+		echo "$n: $i"
+		((n=n+1))
+	done
+
+	read -p "Enter the file you want to edit: " num
+	if [[ ! $num =~ ^[0-9]+$ ]]; then
+		usage
+		exit
+	fi
+
+	$EDITOR ${file[$num]}
 elif [[ $# == 1 ]] && [[ $1 == "name" ]]; then
 	newest
 else
