@@ -43,6 +43,7 @@ elif [[ $# == 1 ]] && [[ $1 =~ ^[0-9]+$ ]]; then
 		exit
 	fi
 
+	((num=num-1))
 	$EDITOR ${file[$num]}
 elif [[ $# == 1 ]] && [[ $1 == "name" ]]; then
 	newest
