@@ -10,3 +10,4 @@
 *	topcoder: launch topcoder arena
 *	up: goto the upper dirs
 * 	update-dotfiles: make github/dotfiles up to date
+* 	update-octopress: a simple script to update octopress blog to avoid some typing errors
