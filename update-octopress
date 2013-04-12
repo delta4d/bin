@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+cd $HOME/github/delta4d.github.com
+git add .
+read -p "give a short comment: " comment
+comment=${comment:-"update"}
+git push origin source
