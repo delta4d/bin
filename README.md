@@ -9,3 +9,4 @@
 *	sysinfo: a simple sysinfo script in ruby, only to practice ruby, the function is very limited
 *	topcoder: launch topcoder arena
 *	up: goto the upper dirs
+* 	update-dotfiles: make github/dotfiles upto date
