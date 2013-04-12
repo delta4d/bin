@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+# update github/dotfiles
+# by delta4d@gmail.com
 
 LOC=$HOME/github/dotfiles
 FILES=(Xdefaults bashrc vimrc xinitrc zshrc)
