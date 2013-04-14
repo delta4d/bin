@@ -4,4 +4,5 @@ cd $HOME/github/delta4d.github.com
 git add .
 read -p "give a short comment: " comment
 comment=${comment:-"update"}
+git commit -m $comment
 git push origin source
