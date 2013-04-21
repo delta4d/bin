@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+rake deploy
+echo "deploy OK"
+echo "start updating source branch"
 cd $HOME/github/delta4d.github.com
 git add .
 read -p "give a short comment: " comment
