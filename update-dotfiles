@@ -6,6 +6,8 @@ LOC=$HOME/github/dotfiles
 FILES=(Xdefaults bashrc vimrc xinitrc zshrc)
 NEEDS_UPDATE=0
 
+cd $LOC
+
 for file in ${FILES[@]}; do
 	src="$HOME/.$file"
 	dst="$LOC/$file"
