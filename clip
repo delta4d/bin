@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # copy the output to the system clipboard
 # by delta4d@gmail.com
 

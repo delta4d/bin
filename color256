@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Print color table in 256 color term
 # Convert values between RGB hex codes and 256 color term color codes
